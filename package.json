@@ -1,0 +1,21 @@
+{
+  "name": "ticket-management",
+  "version": "1.0.0",
+  "description": "Manage tickets in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node":
+      "babel-node --presets='@babel/preset-typescript' --ignore='foo|bar|baz'",
+    "start": "nodemon --exec npm run babel-node -- index.ts"
+  },
+  "keywords": ["nodejs"],
+  "author": "Ethan Zhang",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-typescript": "^7.13.0",
+    "nodemon": "^2.0.7"
+  }
+}
