@@ -1,6 +1,10 @@
-import fs from 'fs';
-console.log('Hello world, Ethan');
+import boxen from 'boxen'
+import chalk from 'chalk';
+import main from './main'
 
-fs.readFile('../assets/organizations.json', (error, data) => {
-  console.log('data: ', data);
-});
+console.log(boxen('Welcome to Zendesk Search', { borderColor: 'cyan', padding: 1, margin: 2 }));
+
+console.log('Type ' + chalk.blue('\'quite\'') + ' to exit at anytime, Press ' + chalk.blue('\'Enter\'') + ' to continue');
+console.log('\n');
+
+main();
