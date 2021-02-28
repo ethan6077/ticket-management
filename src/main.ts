@@ -12,7 +12,8 @@ async function main() {
   if (searchParams[0] === 'search') {
     const searchResult = await performSearch(searchParams[1] as FileName, searchParams[2], searchParams[3])
 
-    console.log('Result: ', searchResult);
+    console.log('Result:\n', JSON.stringify(searchResult, null, '  '));
+    console.log('\n');
   }
 }
 
