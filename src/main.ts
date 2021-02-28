@@ -2,6 +2,7 @@
 import { keys, values } from 'lodash'
 import selectSearchOption from './selectSearchOption';
 import performSearch from './performSearch'
+import listSearchableFields from './listSearchableFields'
 import { SearchConfigFilled } from './types'
 
 async function main() {
@@ -23,6 +24,13 @@ async function main() {
     const searchResult = await performSearch(searchConfig as SearchConfigFilled)
 
     console.log('Result:\n', JSON.stringify(searchResult, null, '  '));
+    console.log('\n');
+  }
+
+  if (searchConfig.searchOption === 'view') {
+    const viewResult = await listSearchableFields()
+
+    console.log('Result:\n', JSON.stringify(viewResult, null, '  '));
     console.log('\n');
   }
 }

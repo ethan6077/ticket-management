@@ -11,3 +11,10 @@ export interface SearchConfigFilled extends Required<Exclude<SearchConfig, 'sear
   searchOption: 'search'
   searchTarget: FileName
 }
+
+export interface SearchableFieldsObject {
+  target: FileName
+  fields: string[]
+}
+
+export type SearchableFieldsObjectList = SearchableFieldsObject[]

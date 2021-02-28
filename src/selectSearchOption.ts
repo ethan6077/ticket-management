@@ -44,6 +44,12 @@ async function selectSearchOption(): Promise<SearchConfig> {
     }
   }
 
+  if (answers.choice === 'view') {
+    return {
+      searchOption: 'view',
+    }
+  }
+
   return {};
 }
 
