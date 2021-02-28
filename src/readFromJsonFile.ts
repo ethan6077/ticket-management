@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { FileName } from './types'
 
 const root = path.dirname(require.main.filename)
 const assetsPath = path.join(root, '../assets')
-
-export type FileName = 'organizations' | 'users' | 'tickets'
 
 async function readFromJsonFile(fileName : FileName) {
   const jsonFilePath = path.join(assetsPath, fileName + '.json')

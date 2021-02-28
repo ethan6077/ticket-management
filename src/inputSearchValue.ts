@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
+import { SearchConfig } from './types'
 
-async function inputSearchValue() {
+async function inputSearchValue(): Promise<SearchConfig> {
   const answers = await inquirer
     .prompt([
       {
@@ -12,7 +13,17 @@ async function inputSearchValue() {
 
   console.log(JSON.stringify(answers, null, '  '));
 
-  return answers.searchValue;
+  if (!answers || !answers.searchValue) {
+    return {};
+  }
+
+  if (answers.searchValue === 'quite') {
+    return {};
+  }
+
+  return {
+    searchValue: answers.searchValue,
+  };
 }
 
 export default inputSearchValue;

@@ -1,16 +1,17 @@
-import readFromJsonFile, { FileName } from './readFromJsonFile'
+import readFromJsonFile from './readFromJsonFile'
+import { SearchConfigFilled } from './types'
 
-async function performSearch(target: FileName, key: any, value: any) {
-  const data = await readFromJsonFile(target)
+async function performSearch(conf: SearchConfigFilled) {
+  const data = await readFromJsonFile(conf.searchTarget)
   if (!data || !Array.isArray(data)) {
     return;
   }
 
   return data.find(d => {
-    if (typeof d[key] === 'number') {
-      return d[key].toString() === value
+    if (typeof d[conf.searchTerm] === 'number') {
+      return d[conf.searchTerm].toString() === conf.searchValue
     }
-    return d[key] === value
+    return d[conf.searchTerm] === conf.searchValue
   })
 }
 

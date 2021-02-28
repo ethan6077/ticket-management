@@ -1,16 +1,26 @@
+
+import { keys, values } from 'lodash'
 import selectSearchOption from './selectSearchOption';
 import performSearch from './performSearch'
-import { FileName } from './readFromJsonFile'
+import { SearchConfigFilled } from './types'
 
 async function main() {
-  const searchParams = await selectSearchOption();
+  const searchConfig = await selectSearchOption();
 
-  if (searchParams.length === 0) {
-    console.error('Invalid search params!');
+  console.log('searchConfig: ', searchConfig);
+
+  if (keys(searchConfig).length === 0) {
+    console.error('Invalid search config!');
+    return;
   }
 
-  if (searchParams[0] === 'search') {
-    const searchResult = await performSearch(searchParams[1] as FileName, searchParams[2], searchParams[3])
+  if (values(searchConfig).some(v => v === 'quite')) {
+    console.log('See you later!');
+    return;
+  }
+
+  if (searchConfig.searchOption === 'search' && searchConfig.searchTarget && searchConfig.searchTerm && searchConfig.searchValue) {
+    const searchResult = await performSearch(searchConfig as SearchConfigFilled)
 
     console.log('Result:\n', JSON.stringify(searchResult, null, '  '));
     console.log('\n');
