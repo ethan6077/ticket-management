@@ -26,8 +26,6 @@ async function selectSearchOption(): Promise<SearchConfig> {
       }
     ]);
 
-  console.log(JSON.stringify(answers, null, '  '));
-
   if (!answers || !answers.choice) {
     process.exit();
   }

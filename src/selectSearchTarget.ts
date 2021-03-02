@@ -30,8 +30,6 @@ async function selectSearchTarget(): Promise<SearchConfig> {
       }
     ]);
 
-  console.log(JSON.stringify(answers, null, '  '));
-
   if (!answers || !answers.searchTarget) {
     process.exit();
   }

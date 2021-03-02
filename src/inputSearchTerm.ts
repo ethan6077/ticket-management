@@ -12,8 +12,6 @@ async function inputSearchTerm(): Promise<SearchConfig> {
       }
     ]);
 
-  console.log(JSON.stringify(answers, null, '  '));
-
   if (!answers || !answers.searchTerm) {
     process.exit();
   }
