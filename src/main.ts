@@ -8,7 +8,8 @@ import { SearchConfigFilled } from './types'
 async function main() {
   const searchConfig = await selectSearchOption();
 
-  console.log('searchConfig: ', searchConfig);
+  // We can turn this on when debugging, it shows search config values
+  // console.log('searchConfig: ', searchConfig);
 
   if (keys(searchConfig).length === 0) {
     console.error('Invalid search config!');
@@ -22,8 +23,9 @@ async function main() {
 
   if (searchConfig.searchOption === 'search' && searchConfig.searchTarget && searchConfig.searchTerm && searchConfig.searchValue) {
     const searchResult = await performSearch(searchConfig as SearchConfigFilled)
+    const searchResultDisplay = searchResult ? JSON.stringify(searchResult, null, '  ') : 'No results found';
 
-    console.log('Result:\n', JSON.stringify(searchResult, null, '  '));
+    console.log('Result:\n', searchResultDisplay);
     console.log('\n');
   }
 
