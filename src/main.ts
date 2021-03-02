@@ -23,7 +23,7 @@ async function main() {
 
   if (searchConfig.searchOption === 'search' && searchConfig.searchTarget && searchConfig.searchTerm && searchConfig.searchValue) {
     const searchResult = await performSearch(searchConfig as SearchConfigFilled)
-    const searchResultDisplay = searchResult ? JSON.stringify(searchResult, null, '  ') : 'No results found';
+    const searchResultDisplay = searchResult.length > 0 ? JSON.stringify(searchResult, null, '  ') : 'No results found';
 
     console.log('Result:\n', searchResultDisplay);
     console.log('\n');

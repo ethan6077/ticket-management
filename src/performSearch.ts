@@ -7,9 +7,12 @@ async function performSearch(conf: SearchConfigFilled) {
     return;
   }
 
-  return data.find(d => {
-    if (typeof d[conf.searchTerm] === 'number') {
+  return data.filter(d => {
+    if (typeof d[conf.searchTerm] === 'number' || typeof d[conf.searchTerm] === 'boolean') {
       return d[conf.searchTerm].toString() === conf.searchValue
+    }
+    if (Array.isArray(d[conf.searchTerm])) {
+      return d[conf.searchTerm].includes(conf.searchValue);
     }
     return d[conf.searchTerm] === conf.searchValue
   })
