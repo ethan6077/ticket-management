@@ -30,6 +30,14 @@ Add unit tests (I haven't got time for it yet.)
 
 ## Screenshots
 
+- Start Screen
+
 ![Alt text](./screenshots/screen_start.png?raw=true "Start")
 
+- Search Users by field `suspended`
+
 ![Alt text](./screenshots/screen_search.png?raw=true "Search Users")
+
+- Search Tickets by field `tags`
+
+![Alt text](./screenshots/screen_search_2.png?raw=true "Search Tickets")
