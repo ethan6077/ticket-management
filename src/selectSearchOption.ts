@@ -19,8 +19,8 @@ async function selectSearchOption(): Promise<SearchConfig> {
             name: 'View a list of searchable fields'
           },
           {
-            value: 'quite',
-            name: 'Quite'
+            value: 'quit',
+            name: 'Quit'
           }
         ],
       }
@@ -29,11 +29,12 @@ async function selectSearchOption(): Promise<SearchConfig> {
   console.log(JSON.stringify(answers, null, '  '));
 
   if (!answers || !answers.choice) {
-    return {};
+    process.exit();
   }
 
-  if (answers.choice === 'quite') {
-    return {};
+  if (answers.choice === 'quit') {
+    console.log('See you later!');
+    process.exit();
   }
 
   if (answers.choice === 'search') {
@@ -41,13 +42,13 @@ async function selectSearchOption(): Promise<SearchConfig> {
     return {
       searchOption: 'search',
       ...followingConfig
-    }
+    };
   }
 
   if (answers.choice === 'view') {
     return {
       searchOption: 'view',
-    }
+    };
   }
 
   return {};

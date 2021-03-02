@@ -15,11 +15,12 @@ async function inputSearchTerm(): Promise<SearchConfig> {
   console.log(JSON.stringify(answers, null, '  '));
 
   if (!answers || !answers.searchTerm) {
-    return {};
+    process.exit();
   }
 
-  if (answers.searchTerm === 'quite') {
-    return {};
+  if (answers.searchTerm === 'quit') {
+    console.log('See you later!');
+    process.exit();
   }
 
   const followingConfig = await inputSearchValue();

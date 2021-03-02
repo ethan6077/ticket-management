@@ -15,9 +15,9 @@ async function main() {
     return;
   }
 
-  if (values(searchConfig).some(v => v === 'quite')) {
+  if (values(searchConfig).some(v => v === 'quit')) {
     console.log('See you later!');
-    return;
+    process.exit();
   }
 
   if (searchConfig.searchOption === 'search' && searchConfig.searchTarget && searchConfig.searchTerm && searchConfig.searchValue) {

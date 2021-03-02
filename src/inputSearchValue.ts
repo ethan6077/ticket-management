@@ -14,11 +14,12 @@ async function inputSearchValue(): Promise<SearchConfig> {
   console.log(JSON.stringify(answers, null, '  '));
 
   if (!answers || !answers.searchValue) {
-    return {};
+    process.exit();
   }
 
-  if (answers.searchValue === 'quite') {
-    return {};
+  if (answers.searchValue === 'quit') {
+    console.log('See you later!');
+    process.exit();
   }
 
   return {

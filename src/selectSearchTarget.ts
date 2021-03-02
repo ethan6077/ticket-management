@@ -23,8 +23,8 @@ async function selectSearchTarget(): Promise<SearchConfig> {
             name: 'Tickets'
           },
           {
-            value: 'quite',
-            name: 'Quite'
+            value: 'quit',
+            name: 'Quit'
           }
         ],
       }
@@ -33,11 +33,12 @@ async function selectSearchTarget(): Promise<SearchConfig> {
   console.log(JSON.stringify(answers, null, '  '));
 
   if (!answers || !answers.searchTarget) {
-    return {};
+    process.exit();
   }
 
-  if (answers.searchTarget === 'quite') {
-    return {};
+  if (answers.searchTarget === 'quit') {
+    console.log('See you later!');
+    process.exit();
   }
 
   const followingConfig = await inputSearchTerm();

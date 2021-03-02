@@ -1,8 +1,8 @@
 export type FileName = 'organizations' | 'users' | 'tickets';
 
 export interface SearchConfig {
-  searchOption?: 'search' | 'view' | 'quite'
-  searchTarget?: FileName | 'quite'
+  searchOption?: 'search' | 'view' | 'quit'
+  searchTarget?: FileName | 'quit'
   searchTerm?: string
   searchValue?: string
 }
