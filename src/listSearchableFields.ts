@@ -6,7 +6,7 @@ async function listSearchableFields(): Promise<SearchableFieldsObjectList> {
   const fileList: FileName[] = ['organizations', 'users', 'tickets'];
 
   return Promise.all(fileList.map(async (f) => {
-    const data = await readFromJsonFile(fileList[0]);
+    const data = await readFromJsonFile(f);
 
     if (!data || !Array.isArray(data)) {
       return {
