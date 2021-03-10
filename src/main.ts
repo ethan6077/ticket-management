@@ -28,6 +28,7 @@ async function main() {
       data = await readFromJsonFile(searchConfig.searchTarget as FileName)
     } catch (error) {
       console.log("Sorry, Invalid Json file!")
+      return;
     }
 
     if (!data || !Array.isArray(data)) {
