@@ -13,7 +13,12 @@ async function readFromJsonFile(fileName : FileName) {
       if (err) {
         reject(err)
       }
-      const parsedData = JSON.parse(data)
+      let parsedData
+      try {
+        parsedData = JSON.parse(data)
+      } catch (jsonParseError) {
+        reject(jsonParseError)
+      }
       resolve(parsedData)
     });
   });

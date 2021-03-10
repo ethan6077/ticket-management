@@ -1,9 +1,10 @@
 
 import { keys, values } from 'lodash'
 import selectSearchOption from './selectSearchOption';
+import readFromJsonFile from './readFromJsonFile'
 import performSearch from './performSearch'
 import listSearchableFields from './listSearchableFields'
-import { SearchConfigFilled } from './types'
+import { SearchConfigFilled, FileName } from './types'
 
 async function main() {
   const searchConfig = await selectSearchOption();
@@ -22,7 +23,18 @@ async function main() {
   }
 
   if (searchConfig.searchOption === 'search' && searchConfig.searchTarget && searchConfig.searchTerm && searchConfig.searchValue) {
-    const searchResult = await performSearch(searchConfig as SearchConfigFilled)
+    let data
+    try {
+      data = await readFromJsonFile(searchConfig.searchTarget as FileName)
+    } catch (error) {
+      console.log("Sorry, Invalid Json file!")
+    }
+
+    if (!data || !Array.isArray(data)) {
+      return;
+    }
+
+    const searchResult = await performSearch(searchConfig as SearchConfigFilled, data)
     const searchResultDisplay = searchResult.length > 0 ? JSON.stringify(searchResult, null, '  ') : 'No results found';
 
     console.log('Result:\n', searchResultDisplay);
